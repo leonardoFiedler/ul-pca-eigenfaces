@@ -2,7 +2,9 @@
 
 ## About the project
 
-This project uses ORL dataset to apply PCA in facial recognition.
+This project uses ORL dataset to apply PCA in facial recognition. This project was made based on [this Java implementation][project-base].
+
+[project-base]: https://github.com/lobokoch/unsupervised-learning
 
 ## Setup the project
 
