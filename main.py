@@ -111,7 +111,7 @@ def load_args():
         '-d', 
         '--dataset', 
         type=str,
-        default='./ORL',
+        default=f'.{os.sep}ORL',
         help='Caminho para as imagens do dataset')
     
     return parser
@@ -132,7 +132,7 @@ def main(args):
         model.train(X_train, np.array(y_train))
 
         corrects = 0
-        min_distance = sys.float_info.min
+        min_distance = sys.float_info.max
         max_distance = sys.float_info.min
         mean_distance = 0
         
@@ -153,10 +153,13 @@ def main(args):
             mean_distance += confidence
         
         accuracy = corrects / len(test) * 100
-        print(corrects)
+        
+        mean_distance /= len(test)
         print(f'{num_component} componentes principais, acurácia: {accuracy:.2f}%')
+        print(f'Número de acertos: {corrects}/{len(test)}')
+        print(f'Distância Mínima: {min_distance:.2f}, Distância Máxima: {max_distance:.2f}')
+        print(f'Distância Média: {mean_distance:.2f}')
         print('*' * 80)
-                
 
 # Programa principal
 if __name__ == "__main__":
